@@ -1,3 +1,5 @@
-#!/usr/bin/env
+# A file which has a shebang line as its first line is
+# granted execute permission.
 
-puts 'Hello, World!'
+#!/usr/bin/env ruby
+puts 'hello, world'
