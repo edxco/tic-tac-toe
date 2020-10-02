@@ -25,7 +25,7 @@ puts " 7 | 8 | 9
 moves = 9
 
 # Loop to ask for moves until moves are out
-while moves > 0
+while moves.positive?
 
   # Choose at random player for first move
   puts "#{player1} Where do you want to make your first move?"
@@ -40,10 +40,9 @@ while moves > 0
 
   # Check if a user has won
   # player1.win == true ? break : continue
-  
   moves -= 1
-  break if moves == 0
-  
+  break if moves.zero?
+
   # Choose 2nd player his move
   puts "#{player2} Where do you want to make your first move?"
   gets.chomp
