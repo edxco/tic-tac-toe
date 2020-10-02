@@ -21,27 +21,49 @@ puts " 7 | 8 | 9
 ---+---+---
  1 | 2 | 3"
 
-# Choose at random player for first move
-puts "#{player1} Where do you want to make your first move?"
-gets.chomp
+# Number of maximum moves during the game
+moves = 9
 
-# Display board after each move for each player
-puts " 7 | 8 | 9
----+---+---
- 4 | x | 6
----+---+---
- 1 | 2 | 3"
+# Loop to ask for moves until moves are out
+while moves > 0
 
-# Choose 2nd player his move
-puts "#{player2} Where do you want to make your first move?"
-gets.chomp
+  # Choose at random player for first move
+  puts "#{player1} Where do you want to make your first move?"
+  gets.chomp
+
+  # Display board after each move for each player
+  puts " 7 | 8 | 9
+  ---+---+---
+  4 | x | 6
+  ---+---+---
+  1 | 2 | 3"
+
+  # Check if a user has won
+  # player1.win == true ? break : continue
+  
+  moves -= 1
+  break if moves == 0
+  
+  # Choose 2nd player his move
+  puts "#{player2} Where do you want to make your first move?"
+  gets.chomp
+
+  # Display board after each move for each player
+  puts " 7 | 8 | 9
+  ---+---+---
+  4 | x | 6
+  ---+---+---
+  1 | 2 | 3"
+
+  # Check if a user has won
+  # player2.win == true ? break : continue
+
+  moves -= 1
+end
 
 # Check if someone wins or game tie
 puts "#{player2} wins!"
 
-# Check if board is fill
-puts 'No more moves'
-
 # After the game is over, ask if they want to play again
-puts 'Do you want to play again?'
+puts 'Do you want to play again? (Y/N)'
 gets.chomp
