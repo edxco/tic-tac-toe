@@ -13,6 +13,10 @@ puts "#{player1} vs #{player2}"
 puts 'Player 1 Choose if x or o'
 gets.chomp
 
+# Check if the user has enter a valid sign
+puts '$ is not a valid sign, plese chose if x or o'
+gets.chomp
+
 # Display initial board
 puts 'You can play with your numeric keyboard with one hand'
 puts " 7 | 8 | 9
@@ -24,11 +28,18 @@ puts " 7 | 8 | 9
 # Number of maximum moves during the game
 moves = 9
 
+# Variable for ending game
+game_on = true
+
 # Loop to ask for moves until moves are out
-while moves.positive?
+while game_on
 
   # Choose at random player for first move
   puts "#{player1} Where do you want to make your first move?"
+  gets.chomp
+
+  # Check if it is a valid move
+  puts 'Not a valid move or the position is already taken, please choose another:'
   gets.chomp
 
   # Display board after each move for each player
@@ -39,9 +50,10 @@ while moves.positive?
   1 | 2 | 3"
 
   # Check if a user has won
-  # player1.win == true ? break : continue
+  # player1.win == true ? game_on = false
+
   moves -= 1
-  break if moves.zero?
+  game_on = false if moves.zero?
 
   # Choose 2nd player his move
   puts "#{player2} Where do you want to make your first move?"
@@ -55,9 +67,10 @@ while moves.positive?
   1 | 2 | 3"
 
   # Check if a user has won
-  # player2.win == true ? break : continue
+  # player2.win == true ? game_on = false
 
   moves -= 1
+  game_on = false if moves.zero?
 end
 
 # Check if someone wins or game tie
