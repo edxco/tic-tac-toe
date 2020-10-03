@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require 'pry'
+#require 'pry'
 
 class Player
   attr_reader :name
@@ -20,6 +20,8 @@ class Player
   end
 end
 
+first_player = nil
+
 def game_initializer
   players_objects = []
   puts 'Enter player1 name please:'
@@ -35,7 +37,22 @@ def game_initializer
   first_player == player1 ? second_player = player2 : second_player = player1
   first_player.choose_sign
   first_player.sign == 'x' ? second_player.sign = 'o' : second_player.sign = 'x'
-  binding.pry
+  #binding.pry
 end
 
 game_initializer
+
+table = {a:1, b:2, c:3, d:4, e:5, f:6, g:7, h:8, i:9}
+
+puts "  #{table[:g]} | #{table[:h]} | #{table[:i]}
+---+---+---
+#{table[:d]} | #{table[:e]} | #{table[:f]}
+---+---+---
+#{table[:a]} | #{table[:b]} | #{table[:c]}"
+
+moves = 9
+
+while moves.positive?
+  p first_player
+end
+
