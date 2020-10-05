@@ -33,7 +33,17 @@ table = table_method
 
   # Choose at random player for first move
   puts "#{first_player.name} Where do you want to make your first move?"
-  move = gets.chomp
+  move = gets.chomp.to_i
+ 
+  move <= 9 && move >= 1 ? state = false : state = true
+ 
+   while state
+     puts "Invalid move, choose between 1 or 9?"
+     move = gets.chomp.to_i
+     move <= 9 && move >= 1 ? state = false : state = true
+   end 
+  
+
   table[:"#{move}"] = first_player.sign
   # Check if it is a valid move
   # puts 'Not a valid move or the position is already taken, please choose another:'
