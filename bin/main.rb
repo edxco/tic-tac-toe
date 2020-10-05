@@ -55,4 +55,3 @@ moves = 9
 while moves.positive?
   p first_player
 end
-
