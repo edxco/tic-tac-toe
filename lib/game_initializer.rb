@@ -18,4 +18,5 @@ def game_initializer
   first_player.sign == 'x' ? second_player.sign = 'o' : second_player.sign = 'x'
   # current_player = second_player
   # current_player == second_player ? current_player = first_player : current_player = second_player
+  return first_player, second_player
 end
