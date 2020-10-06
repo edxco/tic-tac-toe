@@ -16,7 +16,6 @@ table.show_table
   game_on = true
 
   while game_on
-    # Choose at random player for first move
     puts "#{player_turn.name} (#{player_turn.sign}) your turn to choose move:"
     move = gets.chomp.to_i
   
@@ -27,21 +26,30 @@ table.show_table
 
     table.show_table(move, player_turn.sign)
 
-    if table.check_win
-      puts "#{player_turn.name} Wins!" 
-      break
-    end 
+    case table.check_win
+    when 1
+      puts "#{player_turn.name} Wins! With a row"
+      game_moves = -1 
+    when 2
+      puts "#{player_turn.name} Wins! With a column" 
+      game_moves = -1
+    when 3
+      puts "#{player_turn.name} Wins! With a diagonal" 
+      game_moves = -1
+    end
 
     game_moves -= 1
     if game_moves.zero?
       puts 'Game tie'
+      game_on = false
+    elsif game_moves < 0
       game_on = false
     end
 
     player_turn = player_turn == players[0] ? players[1] : players[0]
   end
 
-  puts "Do you want to play again? (y/n):"
+  puts "\nDo you want to play again? (y/n):"
   play_again = gets.chomp
   break if play_again != "y"
 

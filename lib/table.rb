@@ -24,7 +24,7 @@ class Table
     ---+---+---
      #{table[:"4"]} | #{table[:"5"]} | #{table[:"6"]}
     ---+---+---
-     #{table[:"1"]} | #{table[:"2"]} | #{table[:"3"]}"
+     #{table[:"1"]} | #{table[:"2"]} | #{table[:"3"]}\n"
   end
 
   def valid_move(move)
@@ -33,30 +33,32 @@ class Table
   end
 
   def check_win
+    status = 0
     if @table[:"1"] == @table[:"2"] && @table[:"3"] == @table[:"1"]
-      true
-      # puts 'Row bottom line'
+      status = 1
+      
     elsif @table[:"4"] == @table[:"5"] && @table[:"4"] == @table[:"6"]
-      true
-      # puts 'Row middle line'
+      status = 1
+      
     elsif @table[:"7"] == @table[:"8"] && @table[:"7"] == @table[:"9"]
-      true
-      # puts 'Row top line'
+      status = 1
+
     elsif @table[:"7"] == @table[:"4"] && @table[:"7"] == @table[:"1"]
-      true
-      # puts 'Col 1st line'
+      status = 2
+
     elsif @table[:"8"] == @table[:"5"] && @table[:"8"] == @table[:"2"]
-      true
-      # puts 'Col 2nd line'
+      status = 2
+
     elsif @table[:"9"] == @table[:"6"] && @table[:"9"] == @table[:"3"]
-      true
-      # puts 'Col 3rd line'
+      status = 2
+
     elsif @table[:"7"] == @table[:"5"] && @table[:"5"] == @table[:"3"]
-      true
-      # puts 'Diagonal'
+      status = 3
+
     elsif @table[:"1"] == @table[:"5"] && @table[:"5"] == @table[:"9"]
-      true
-      # puts 'Diagonal'
+      status = 3
+
     end
+
   end
 end
