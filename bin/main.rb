@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 require_relative '../lib/player.rb'
 require_relative '../lib/table.rb'
-# rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+# rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/MethodLength
 def game_initializer
   players_objects = []
   puts 'Enter player1 name please:'
@@ -72,6 +72,6 @@ loop do
   play_again = gets.chomp
   break if play_again != 'y'
 end
-# rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+# rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/MethodLength
 puts "\nGame Over! Thank you for playing\n"
 puts "If you have any suggestion to improve this game please open an Issue\nhttps://github.com/edxco/tic-tac-toe"

@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 class Table
   attr_accessor :table
 
@@ -48,5 +49,5 @@ class Table
       3
     end
   end
-
 end
+# rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
