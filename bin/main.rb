@@ -1,24 +1,24 @@
 #!/usr/bin/env ruby
 require_relative '../lib/player.rb'
 require_relative '../lib/table.rb'
+require_relative '../lib/colors.rb'
 # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/MethodLength
 def game_initializer
   players_objects = []
-  puts 'Enter player1 name please:'
+  puts 'Enter player1 name please:'.blue
   player1 = Player.new(gets.chomp)
   players_objects << player1
-  puts 'Enter player2 name please'
+  puts 'Enter player2 name please'.blue
   player2 = Player.new(gets.chomp)
   players_objects << player2
 
-  # Choose a random player to specify a sign and start the game
   first_player = players_objects.sample
   second_player = first_player == player1 ? player2 : player1
-  puts "#{first_player.name} Choose if x or o"
+  puts "#{first_player.name} Choose if x or o".blue
   first_player_sign = gets.chomp
 
   while first_player.check_sign(first_player_sign)
-    puts 'Wrong sign! Choose either x or o please'
+    puts 'Wrong sign! Choose either x or o please'.red
     first_player_sign = gets.chomp
   end
 
@@ -37,27 +37,27 @@ def game_on
   game_on = true
 
   while game_on
-    puts "#{player_turn.name} (#{player_turn.sign}) your turn to choose move:"
+    puts "#{player_turn.name} (#{player_turn.sign}) your turn to choose move:".blue
     move = gets.chomp.to_i
     while table.valid_move(move)
-      puts 'Invalid move, choose from 1 to 9?  :'
+      puts 'Invalid move, choose from 1 to 9?  :'.red
       move = gets.chomp.to_i
     end
     table.show_table(move, player_turn.sign)
     case table.check_win
     when 1
-      puts "#{player_turn.name} Wins! With a row"
+      puts "#{player_turn.name} Wins! With a row".green
       game_moves = -1
     when 2
-      puts "#{player_turn.name} Wins! With a column"
+      puts "#{player_turn.name} Wins! With a column".green
       game_moves = -1
     when 3
-      puts "#{player_turn.name} Wins! With a diagonal"
+      puts "#{player_turn.name} Wins! With a diagonal".green
       game_moves = -1
     end
     game_moves -= 1
     if game_moves.zero?
-      puts 'Game tie'
+      puts 'Game tie'.blue
       game_on = false
     elsif game_moves.negative?
       game_on = false
@@ -68,10 +68,10 @@ end
 
 loop do
   game_on
-  puts "\nDo you want to play again? (y/n):"
+  puts "\nDo you want to play again? (y/n):".blue
   play_again = gets.chomp
   break if play_again != 'y'
 end
 # rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/MethodLength
-puts "\nGame Over! Thank you for playing\n"
-puts "If you have any suggestion to improve this game please open an Issue\nhttps://github.com/edxco/tic-tac-toe"
+puts "\nGame Over! Thank you for playing\n".light_blue
+puts "If you have any suggestion to improve this game please open an Issue\nhttps://github.com/edxco/tic-tac-toe".light_blue
