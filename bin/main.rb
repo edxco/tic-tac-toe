@@ -14,7 +14,16 @@ def game_initializer
   # Choose a random player to specify a sign and start the game
   first_player = players_objects.sample
   second_player = first_player == player1 ? player2 : player1
-  first_player.choose_sign
+  puts "#{first_player.name} Choose if x or o"
+  first_player_sign = gets.chomp
+
+  while first_player.check_sign(first_player_sign)
+    puts 'Wrong sign! Choose either x or o please'
+    first_player_sign = gets.chomp
+  end
+
+  first_player.sign = first_player_sign
+
   second_player.sign = (first_player.sign == 'x' ? 'o' : 'x')
   [first_player, second_player]
 end
@@ -26,6 +35,7 @@ def game_on
   table.show_table
   game_moves = 9
   game_on = true
+
   while game_on
     puts "#{player_turn.name} (#{player_turn.sign}) your turn to choose move:"
     move = gets.chomp.to_i

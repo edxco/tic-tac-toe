@@ -6,10 +6,7 @@ class Player
     @sign = sign
   end
 
-  def choose_sign
-    puts "#{@name} Choose if x or o"
-    @sign = gets.chomp
-    puts 'Wrong sign! Choose either x or o please' unless @sign == 'x' || @sign == 'o'
-    choose_sign unless @sign == 'x' || @sign == 'o'
+  def check_sign(first_player_sign)
+    first_player_sign.include?('x') || first_player_sign.include?('o') ? false : true
   end
 end
