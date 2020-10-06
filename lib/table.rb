@@ -1,5 +1,5 @@
 require_relative 'colors.rb'
-
+# rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 class Table
   attr_reader :table
 

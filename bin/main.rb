@@ -20,10 +20,10 @@ def game_initializer
 
   players_objects << player2
 
-  first_player = players_objects.sample
-  second_player = first_player == player1 ? player2 : player1
+  first_player_name = players_objects.sample
+  second_player_name = first_player_name == player1 ? player2 : player1
 
-  puts "#{first_player} Choose if x or o".blue
+  puts "#{first_player_name} Choose if x or o".blue
   first_player_sign = gets.chomp
 
   while check_sign(first_player_sign)
@@ -31,10 +31,10 @@ def game_initializer
     first_player_sign = gets.chomp
   end
 
-  second_player_sign = (first_player_sign == 'x' ? 'o' : 'x')
+  second_player_sign = first_player_sign == 'x' ? 'o' : 'x'
 
-  first_player = Player.new(player1, first_player_sign)
-  second_player = Player.new(player2, second_player_sign)
+  first_player = Player.new(first_player_name, first_player_sign)
+  second_player = Player.new(second_player_name, second_player_sign)
 
   [first_player, second_player]
 end
