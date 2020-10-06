@@ -31,12 +31,11 @@ Clone or download the source code, and run it in your teminal.
 ### Game instructions
 Start the game by running this code in your teminal `bin/main.rb`.
 
-![screenshot](https://github.com/edxco/tic-tac-toe/blob/readme_game_instructions/images/modi5.jpg)
 
 You start the game by entering your names, then the computer will randomly choose one of you to choose his sign. You can only choose "x" or "o".
 After choosing your signs, the first player will choose from 1-9 to put his sign in that index as shown in below image:
 
-![screenshot](https://github.com/edxco/tic-tac-toe/blob/readme_game_instructions/images/modi4.jpg)
+![screenshot](https://github.com/edxco/tic-tac-toe/blob/readme_game_instructions/images/modi5.jpg)
 
 Once the first player choose an index, that index will be changed to his sign as shown below:
 
