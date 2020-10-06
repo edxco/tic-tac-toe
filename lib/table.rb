@@ -1,8 +1,7 @@
-# rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 require_relative 'colors.rb'
 
 class Table
-  attr_accessor :table
+  attr_reader :table
 
   def initialize
     @table = {
@@ -31,7 +30,7 @@ class Table
 
   def valid_move(move)
     check = @table[:"#{move}"]
-    check == 'x' || check == 'o' || move > 9 || move < 1 ? true : false
+    check == 'o'.yellow || check == 'x'.pink || move > 9 || move < 1 ? true : false
   end
 
   def check_win

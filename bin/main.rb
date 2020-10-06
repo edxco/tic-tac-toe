@@ -7,26 +7,35 @@ require_relative '../lib/colors.rb'
 
 def game_initializer
   players_objects = []
-  puts 'Enter player1 name please:'.blue
-  player1 = Player.new(gets.chomp)
+  puts 'Enter Player 1 name please:'.blue
+  player1 = gets.chomp
   players_objects << player1
-  puts 'Enter player2 name please'.blue
-  player2 = Player.new(gets.chomp)
+  puts 'Enter Player 2 name please'.blue
+  player2 = gets.chomp
+
+  while check_player(player1, player2)
+    puts "#{player1} name is already taken, please choose another name:".red
+    player2 = gets.chomp
+  end
+
   players_objects << player2
 
   first_player = players_objects.sample
   second_player = first_player == player1 ? player2 : player1
-  puts "#{first_player.name} Choose if x or o".blue
+
+  puts "#{first_player} Choose if x or o".blue
   first_player_sign = gets.chomp
 
-  while first_player.check_sign(first_player_sign)
+  while check_sign(first_player_sign)
     puts 'Wrong sign! Choose either x or o please'.red
     first_player_sign = gets.chomp
   end
 
-  first_player.sign = first_player_sign
+  second_player_sign = (first_player_sign == 'x' ? 'o' : 'x')
 
-  second_player.sign = (first_player.sign == 'x' ? 'o' : 'x')
+  first_player = Player.new(player1, first_player_sign)
+  second_player = Player.new(player2, second_player_sign)
+
   [first_player, second_player]
 end
 
