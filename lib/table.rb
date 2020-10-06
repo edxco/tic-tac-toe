@@ -19,17 +19,15 @@ class Table
   end
 
   def show_table(move = nil, sign = nil)
+    @table[:"#{move}"] = case sign
+                         when 'x'
+                           sign.pink
+                         when 'o'
+                           sign.yellow
+                         else
+                           sign
+                         end
 
-    case sign
-    when 'x'
-      @table[:"#{move}"] = sign.pink
-    when 'o'
-      @table[:"#{move}"] = sign.yellow
-    else
-      @table[:"#{move}"] = sign
-    end
-
-    #@table[:"#{move}"] = sign
     puts "     #{table[:"7"]} | #{table[:"8"]} | #{table[:"9"]}
     ---+---+---
      #{table[:"4"]} | #{table[:"5"]} | #{table[:"6"]}

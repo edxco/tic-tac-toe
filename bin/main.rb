@@ -74,4 +74,5 @@ loop do
 end
 # rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/MethodLength
 puts "\nGame Over! Thank you for playing\n".light_blue
-puts "If you have any suggestion to improve this game please open an Issue\nhttps://github.com/edxco/tic-tac-toe".light_blue
+puts "If you have any suggestion to improve this game please open an Issue\n"
+puts 'https://github.com/edxco/tic-tac-toe'.light_blue
