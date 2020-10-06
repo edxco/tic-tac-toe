@@ -1,5 +1,5 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
-
+[![Run on Repl.it](https://repl.it/badge/github/edxco/tic-tac-toe)](https://repl.it/github/edxco/tic-tac-toe)
 # Tic-Tac-Toe
 
 > The famous game: Tic-Tac-Toe
