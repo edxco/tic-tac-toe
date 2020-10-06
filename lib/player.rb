@@ -9,9 +9,7 @@ class Player
   def choose_sign
     puts "#{@name} Choose if x or o"
     @sign = gets.chomp
-    unless @sign == 'x' || @sign == 'o'
-      puts 'Wrong sign! Choose either x or o please'
-      choose_sign
-    end
+    puts 'Wrong sign! Choose either x or o please' unless @sign == 'x' || @sign == 'o'
+    choose_sign unless @sign == 'x' || @sign == 'o'
   end
 end

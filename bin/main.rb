@@ -1,82 +1,67 @@
 #!/usr/bin/env ruby
-require 'pry'
-require_relative "../lib/Player.rb"
-require_relative "../lib/game_initializer.rb"
-require_relative "../lib/table.rb"
+require_relative '../lib/player.rb'
+require_relative '../lib/table.rb'
+# rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+def game_initializer
+  players_objects = []
+  puts 'Enter player1 name please:'
+  player1 = Player.new(gets.chomp)
+  players_objects << player1
+  puts 'Enter player2 name please'
+  player2 = Player.new(gets.chomp)
+  players_objects << player2
 
-players = game_initializer
-first_player = players[0]
-second_player = players[1]
-table = table_method
+  # Choose a random player to specify a sign and start the game
+  first_player = players_objects.sample
+  second_player = first_player == player1 ? player2 : player1
+  first_player.choose_sign
+  second_player.sign = (first_player.sign == 'x' ? 'o' : 'x')
+  [first_player, second_player]
+end
 
-  # puts "  #{table[:"7"]} | #{table[:"8"]} | #{table[:"9"]}
-  # ---+---+---
-  # #{table[:"4"]} | #{table[:"5"]} | #{table[:"6"]}
-  # ---+---+---
-  # #{table[:"1"]} | #{table[:"2"]} | #{table[:"3"]}"
-
-  # move = gets.chomp
-
-  # table[:"#{move}"] = first_player.sign
-
-
-  puts "  #{table[:"7"]} | #{table[:"8"]} | #{table[:"9"]}
-  ---+---+---
-  #{table[:"4"]} | #{table[:"5"]} | #{table[:"6"]}
-  ---+---+---
-  #{table[:"1"]} | #{table[:"2"]} | #{table[:"3"]}"
-
-  moves = 9
+def game_on
+  players = game_initializer
+  player_turn = players[0]
+  table = Table.new
+  table.show_table
+  game_moves = 9
   game_on = true
-
   while game_on
-
-  # Choose at random player for first move
-  puts "#{first_player.name} Where do you want to make your first move?"
-  move = gets.chomp.to_i
- 
-  move <= 9 && move >= 1 ? state = false : state = true
- 
-   while state
-     puts "Invalid move, choose between 1 or 9?"
-     move = gets.chomp.to_i
-     move <= 9 && move >= 1 ? state = false : state = true
-   end 
-  
-
-  table[:"#{move}"] = first_player.sign
-  # Check if it is a valid move
-  # puts 'Not a valid move or the position is already taken, please choose another:'
-  # gets.chomp
-
-  # Display board after each move for each player
-  puts "  #{table[:"7"]} | #{table[:"8"]} | #{table[:"9"]}
-   ---+---+---
-   #{table[:"4"]} | #{table[:"5"]} | #{table[:"6"]}
-   ---+---+---
-   #{table[:"1"]} | #{table[:"2"]} | #{table[:"3"]}"
-
-  # Check if a user has won
-  # player1.win == true ? game_on = false
-
-  moves -= 1
-  game_on = false if moves.zero?
-
-  # Choose 2nd player his move
-  puts "#{second_player.name} Where do you want to make your first move?"
-  move = gets.chomp
-  table[:"#{move}"] = second_player.sign
-
-  # Display board after each move for each player
- puts "  #{table[:"7"]} | #{table[:"8"]} | #{table[:"9"]}
-   ---+---+---
-   #{table[:"4"]} | #{table[:"5"]} | #{table[:"6"]}
-   ---+---+---
-   #{table[:"1"]} | #{table[:"2"]} | #{table[:"3"]}"
-
-  # Check if a user has won
-  # player2.win == true ? game_on = false
-
-  moves -= 1
-  game_on = false if moves.zero?
+    puts "#{player_turn.name} (#{player_turn.sign}) your turn to choose move:"
+    move = gets.chomp.to_i
+    while table.valid_move(move)
+      puts 'Invalid move, choose from 1 to 9?  :'
+      move = gets.chomp.to_i
+    end
+    table.show_table(move, player_turn.sign)
+    case table.check_win
+    when 1
+      puts "#{player_turn.name} Wins! With a row"
+      game_moves = -1
+    when 2
+      puts "#{player_turn.name} Wins! With a column"
+      game_moves = -1
+    when 3
+      puts "#{player_turn.name} Wins! With a diagonal"
+      game_moves = -1
+    end
+    game_moves -= 1
+    if game_moves.zero?
+      puts 'Game tie'
+      game_on = false
+    elsif game_moves.negative?
+      game_on = false
+    end
+    player_turn = player_turn == players[0] ? players[1] : players[0]
   end
+end
+
+loop do
+  game_on
+  puts "\nDo you want to play again? (y/n):"
+  play_again = gets.chomp
+  break if play_again != 'y'
+end
+# rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+puts "\nGame Over! Thank you for playing\n"
+puts "If you have any suggestion to improve this game please open an Issue\nhttps://github.com/edxco/tic-tac-toe"
