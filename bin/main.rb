@@ -1,8 +1,10 @@
 #!/usr/bin/env ruby
+require 'pry'
 require_relative '../lib/player.rb'
 require_relative '../lib/table.rb'
 require_relative '../lib/colors.rb'
-# rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/MethodLength
+# rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/MethodLength, Metrics/AbcSize
+
 def game_initializer
   players_objects = []
   puts 'Enter player1 name please:'.blue
@@ -31,20 +33,31 @@ end
 def game_on
   players = game_initializer
   player_turn = players[0]
-  table = Table.new
-  table.show_table
+  table_instance = Table.new
+  table = table_instance.table
+
+  show_table = lambda do |my_table|
+    puts "     #{my_table[:"7"]} | #{my_table[:"8"]} | #{my_table[:"9"]}
+    ---+---+---
+     #{my_table[:"4"]} | #{my_table[:"5"]} | #{my_table[:"6"]}
+    ---+---+---
+     #{my_table[:"1"]} | #{my_table[:"2"]} | #{my_table[:"3"]}\n"
+  end
+
+  show_table.call(table)
   game_moves = 9
   game_on = true
 
   while game_on
     puts "#{player_turn.name} (#{player_turn.sign}) your turn to choose move:".blue
     move = gets.chomp.to_i
-    while table.valid_move(move)
+    while table_instance.valid_move(move)
       puts 'Invalid move, choose from 1 to 9?  :'.red
       move = gets.chomp.to_i
     end
-    table.show_table(move, player_turn.sign)
-    case table.check_win
+    table_instance.modify_table(move, player_turn.sign)
+    show_table.call(table)
+    case table_instance.check_win
     when 1
       puts "#{player_turn.name} Wins! With a row".green
       game_moves = -1
@@ -72,7 +85,7 @@ loop do
   play_again = gets.chomp
   break if play_again != 'y'
 end
-# rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/MethodLength
+# rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/MethodLength, Metrics/AbcSize
 puts "\nGame Over! Thank you for playing\n".light_blue
 puts "If you have any suggestion to improve this game please open an Issue\n"
 puts 'https://github.com/edxco/tic-tac-toe'.light_blue

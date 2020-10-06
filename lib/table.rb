@@ -18,7 +18,7 @@ class Table
     }
   end
 
-  def show_table(move = nil, sign = nil)
+  def modify_table(move = nil, sign = nil)
     @table[:"#{move}"] = case sign
                          when 'x'
                            sign.pink
@@ -27,12 +27,6 @@ class Table
                          else
                            sign
                          end
-
-    puts "     #{table[:"7"]} | #{table[:"8"]} | #{table[:"9"]}
-    ---+---+---
-     #{table[:"4"]} | #{table[:"5"]} | #{table[:"6"]}
-    ---+---+---
-     #{table[:"1"]} | #{table[:"2"]} | #{table[:"3"]}\n"
   end
 
   def valid_move(move)
