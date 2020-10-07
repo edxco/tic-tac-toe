@@ -1,5 +1,5 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
-[![Run on Repl.it](https://repl.it/badge/github/edxco/tic-tac-toe)](https://repl.it/github/edxco/tic-tac-toe)
+[![Run on Repl.it](https://repl.it/badge/github/edxco/tic-tac-toe)](https://repl.it/github/edxco/tic-tac-toe-6)
 
 # Tic-Tac-Toe
 
@@ -16,7 +16,7 @@ Don't let him/her beat you 😉
 
 ## Live Demo
 
-[Live Demo Link](https://repl.it/github/edxco/tic-tac-toe)
+[Live Demo Link](https://repl.it/github/edxco/tic-tac-toe-6)
 
 ## Getting Started
 
