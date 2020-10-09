@@ -11,5 +11,5 @@ def check_player(player1, player2)
 end
 
 def check_sign(first_player_sign)
-  first_player_sign.include?('x') || first_player_sign.include?('o') ? false : true
+  first_player_sign == 'x' || first_player_sign == 'o' ? false : true
 end
