@@ -65,11 +65,22 @@ Then it's other player turn. The second player now should choose his sign in ord
 
 ![screenshot](https://github.com/edxco/tic-tac-toe/blob/readme_game_instructions/images/modi1.jpg)
 
-### Run tests
+### Run linters
 
 You can use Rubocop to test the code.
 In case Rubocop is not installed on your machine, enter this command to install it `gem install rubocop`. You may be required to run the terminal as an administrator.
 Once Rubocop is installed, you simply run `rubocop` in the terminal to test the code.
+
+### Setup Rspec
+
+> We have already created multiple files `player_spec.rb` and `table_spec.rb`, if you want to create another one with the end *`[your file name]`*`_spec.rb`
+- Open `player_spec.rb` or `table_spec.rb` file
+- Open a terminal window and type `rspec`
+- If all test were passed you will see: 
+
+![image](https://github.com/edxco/tic-tac-toe/blob/Rspec-testing/images/spec-shot.png)
+
+Else you'll see a red message, then check errors and fix them 
 
 ## Authors
 
