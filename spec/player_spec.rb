@@ -6,6 +6,10 @@ describe Player do
           p1 = Player.new("Gabriela")
           expect(p1.name).to eql("Gabriela")
       end
+      it "Initialize player name with a previous string" do
+        p1 = Player.new("Michael")
+        expect(p1.name).not_to eql("Gabriela")
+    end
     end
 
     context "Initialize player sign" do
@@ -13,20 +17,28 @@ describe Player do
             p1 = Player.new("Gabriela")
             expect(p1.sign).to eql("x")
         end
+        it "Initialize with default sign" do
+            p1 = Player.new("Gabriela")
+            expect(p1.sign).not_to eql("o")
+        end
     end
 end
 
 describe "#check_player" do
     let(:p1) {"Michael"}
     let(:p2) {"Michael"}
+    let(:p3) {"Gabriela"}
     context "It's the same player name" do
         it "Cannot name both players Michael" do
             expect(check_player(p1, p2)).to eql(true)
         end
+        it "Both names are different" do
+            expect(check_player(p1, p3)).not_to eql(true)
+        end
     end
 end
 
-describe "#check_sign" do
+describe "#check7_sign" do
     let(:sign1) {"x"}
     let(:sign2) {"X"}
     let(:sign3) {"o"}
