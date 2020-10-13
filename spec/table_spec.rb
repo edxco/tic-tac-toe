@@ -19,11 +19,65 @@ describe Table do
     end
     describe "#check_win" do
         context "Check winning moves" do
-            it "First row horizontal win" do
+            it "Top row horizontal win" do
                 check.modify_table(:"9", "x")
                 check.modify_table(:"7", "x")
                 check.modify_table(:"8", "x")
                 expect(check.check_win).to eql(1)
+            end
+            it "Middle row horizontal win" do
+                check.modify_table(:"4", "x")
+                check.modify_table(:"5", "x")
+                check.modify_table(:"6", "x")
+                expect(check.check_win).to eql(1)
+            end
+            it "Bottom row horizontal win" do
+                check.modify_table(:"1", "x")
+                check.modify_table(:"2", "x")
+                check.modify_table(:"3", "x")
+                expect(check.check_win).to eql(1)
+            end
+            it "Left column vertical win" do
+                check.modify_table(:"1", "o")
+                check.modify_table(:"4", "o")
+                check.modify_table(:"7", "o")
+                expect(check.check_win).to eql(2)
+            end
+            it "Middle column vertical win" do
+                check.modify_table(:"8", "o")
+                check.modify_table(:"5", "o")
+                check.modify_table(:"2", "o")
+                expect(check.check_win).to eql(2)
+            end
+            it "Right column vertical win" do
+                check.modify_table(:"9", "o")
+                check.modify_table(:"6", "o")
+                check.modify_table(:"3", "o")
+                expect(check.check_win).to eql(2)
+            end
+            it "First Diagonal win" do
+                check.modify_table(:"1", "o")
+                check.modify_table(:"5", "o")
+                check.modify_table(:"9", "o")
+                expect(check.check_win).to eql(3)
+            end
+            it "Second Diagonal win" do
+                check.modify_table(:"7", "x")
+                check.modify_table(:"5", "x")
+                check.modify_table(:"3", "x")
+                expect(check.check_win).to eql(3)
+            end
+            it "It's a draw game" do
+                check.modify_table(:"1", "o")
+                check.modify_table(:"2", "x")
+                check.modify_table(:"3", "o")
+                check.modify_table(:"4", "x")
+                check.modify_table(:"5", "o")
+                check.modify_table(:"6", "x")
+                check.modify_table(:"7", "o")
+                check.modify_table(:"8", "x")
+                check.modify_table(:"9", "x")
+                expect(check.check_win).not_to eql(1)
             end
         end
     end
