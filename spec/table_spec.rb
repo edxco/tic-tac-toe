@@ -18,7 +18,7 @@ describe Table do
     end
   end
   describe '#check_win' do
-    context 'Check winning moves' do
+    context 'Check horizontal winning moves' do
       it 'Top row horizontal win' do
         check.modify_table(:"9", 'x')
         check.modify_table(:"7", 'x')
@@ -37,6 +37,8 @@ describe Table do
         check.modify_table(:"3", 'x')
         expect(check.check_win).to eql(1)
       end
+    end
+    context 'Check vertical winning moves' do
       it 'Left column vertical win' do
         check.modify_table(:"1", 'o')
         check.modify_table(:"4", 'o')
@@ -55,6 +57,8 @@ describe Table do
         check.modify_table(:"3", 'o')
         expect(check.check_win).to eql(2)
       end
+    end
+    context 'Check diagonal winning moves' do
       it 'First Diagonal win' do
         check.modify_table(:"1", 'o')
         check.modify_table(:"5", 'o')
@@ -67,6 +71,8 @@ describe Table do
         check.modify_table(:"3", 'x')
         expect(check.check_win).to eql(3)
       end
+    end
+    context 'Check draw' do
       it "It's a draw game" do
         check.modify_table(:"1", 'o')
         check.modify_table(:"2", 'x')
