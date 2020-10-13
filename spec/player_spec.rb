@@ -1,4 +1,4 @@
-require '../lib/player.rb'
+require_relative '../lib/player.rb'
 
 describe Player do
   context 'Initialize player name' do
