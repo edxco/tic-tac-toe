@@ -85,6 +85,13 @@ Once Rubocop is installed, you simply run `rubocop` in the terminal to test the 
 - Twitter: [@twitterhandle](https://twitter.com/lalo_nbc/)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/eduardo-n-baeza/)
 
+## Rspec Authors
+
+👤 **Khristian Rojas**
+- Github: [@githubhandle](https://github.com/karmaester)
+- Twitter: [@twitterhandle](https://twitter.com/karmaendlich)
+- Linkedin: [linkedin](https://www.linkedin.com/in/khristian-rojas/)
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
