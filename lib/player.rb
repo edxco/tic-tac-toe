@@ -1,3 +1,4 @@
+# rubocop:disable Style/MultipleComparison
 class Player
   attr_reader :name, :sign
   def initialize(name, sign = 'x')
@@ -13,3 +14,5 @@ end
 def check_sign(first_player_sign)
   first_player_sign == 'x' || first_player_sign == 'o' ? false : true
 end
+
+# rubocop:enable Style/MultipleComparison
