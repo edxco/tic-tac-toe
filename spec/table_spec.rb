@@ -20,11 +20,10 @@ describe Table do
     describe "#check_win" do
         context "Check winning moves" do
             it "First row horizontal win" do
-                check[:"7"] << "x"
-                check[:"8"] << "x"
-                check[:"9"] << "x"
-                p check
-                expect(check.check_win).to eql(true)
+                check.modify_table(:"9", "x")
+                check.modify_table(:"7", "x")
+                check.modify_table(:"8", "x")
+                expect(check.check_win).to eql(1)
             end
         end
     end
